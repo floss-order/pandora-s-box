@@ -1,0 +1,13 @@
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nav__list {
+    list-style: none;
+    display: flex;
+}
+
+.nav__list-item:not(:last-child) {
+    margin-right: 1rem;
+}
