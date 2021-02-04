@@ -14,7 +14,7 @@ db.authenticate()
     console.log('Successfully connected to the database')
 
     app.listen(process.env.PORT, () => {
-        console.log(`Server is running on ${process.env.PORT}`)
+        console.log(`Server is running on http://localhost:${process.env.PORT}`)
     })
 })
 .catch(error => {
