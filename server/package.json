@@ -10,7 +10,8 @@
   "author": "floss-order",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "sqlite3": "^5.0.1"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
