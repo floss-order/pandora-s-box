@@ -43,6 +43,7 @@ function SignInForm() {
 			variant="outlined"
 			name="password" 
 			inputRef={register}
+			required
 			error={!!errors.password}
 			helperText={errors?.password?.message}
             />
