@@ -1,9 +1,20 @@
 import React from 'react'
 import { TextField, Typography, Button, Checkbox, FormControlLabel } from '@material-ui/core'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as formValidation from '../formValidation'
 
 function SignInForm() {
+	const { register, handleSubmit, errors } = useForm({
+		resolver: yupResolver(formValidation.signInSchema)
+	})
+
+	function onSubmit(data) {
+		console.log(data)
+	}
+
     return (
-        <form>
+        <form noValidate onSubmit={handleSubmit(onSubmit)}>
             <Typography 
 			component="h1" 
 			variant="h4" 
@@ -17,6 +28,11 @@ function SignInForm() {
 			margin="normal" 
 			type="email" 
 			variant="outlined" 
+			name="email"
+			inputRef={register}
+			required
+			error={!!errors.email}
+			helperText={errors?.email?.message}
 			/>
 
 			<TextField 
@@ -24,7 +40,11 @@ function SignInForm() {
 			fullWidth 
 			margin="normal" 
 			type="password" 
-			variant="outlined" 
+			variant="outlined"
+			name="password" 
+			inputRef={register}
+			error={!!errors.password}
+			helperText={errors?.password?.message}
             />
 
             <FormControlLabel
