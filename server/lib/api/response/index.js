@@ -1,4 +1,4 @@
-const ApplicationError, createError = require('../error') 
+const error = require('../error') 
 
 function formatError(error, overrides = {}) {
   // `Error.stack`'s `enumerable` property descriptor is `false`
@@ -29,13 +29,13 @@ function formatResponse(result, override = {}) {
 }
 
 function sendResponse(res, payload, statusCode = 200, context = {}) {
-  if (payload instanceof ApplicationError) {
+  if (payload instanceof error.ApplicationError) {
     const code = payload.statusCode || 500
     return res.status(code).json(formatError(payload))
   }
 
   if (payload instanceof Error) {
-    const newError = createError(payload)
+    const newError = error.createError(payload)
     const code = newError.statusCode || 500
     return res.status(code).json(formatError(newError))
   }

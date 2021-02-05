@@ -1,9 +1,9 @@
 const ApplicationError = require('./applicationError')
 const commonErrors = require('./commonErrors')
-const errorFactory = require('./errorFactory')
+const createError = require('./errorFactory')
 
 module.exports = {
     ApplicationError,
     commonErrors,
-    errorFactory
+    createError
 }
