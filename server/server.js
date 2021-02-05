@@ -10,6 +10,11 @@ if(process.env.NODE_ENV === 'development') {
 app.use(express.static('public'))
 app.use(express.json())
 
+// Routes list
+const signUpRouter = require('./routes/signup')
+app.use('/signup', signUpRouter)
+
+// Start the server on successfull auth
 db.authenticate()
 .then(() => {
     console.log(chalk.yellow('Successfully connected to the database'))
