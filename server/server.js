@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const db = require('./db')
 const chalk = require('chalk')
+const errorHandler = require('./middleware/errorHandler')
 
 if(process.env.NODE_ENV === 'development') {
     require('dotenv').config()
@@ -13,6 +14,9 @@ app.use(express.json())
 // Routes list
 const signUpRouter = require('./routes/signup')
 app.use('/signup', signUpRouter)
+
+// Middleware
+app.use(errorHandler)
 
 // Start the server on successfull auth
 db.authenticate()
