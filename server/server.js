@@ -3,6 +3,7 @@ const app = express()
 const db = require('./db')
 const chalk = require('chalk')
 const errorHandler = require('./middleware/errorHandler')
+const morgan = require('morgan')
 
 if(process.env.NODE_ENV === 'development') {
     require('dotenv').config()
@@ -10,6 +11,7 @@ if(process.env.NODE_ENV === 'development') {
 
 app.use(express.static('public'))
 app.use(express.json())
+app.use(morgan('dev'))
 
 // Routes list
 const signUpRouter = require('./routes/signup')
